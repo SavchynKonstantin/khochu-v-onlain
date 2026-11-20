@@ -87,6 +87,30 @@ footer{font-size:13px;color:var(--muted);padding-block:26px;max-width:720px;marg
 @media (max-width:640px){.who{grid-template-columns:minmax(0,1fr)}.who img{max-width:360px}}
 @media (prefers-reduced-motion:no-preference){.btn{transition:filter .15s}}
 
+
+/* ---------- Лого і перший екран на телефоні ---------- */
+.top{padding-top:22px;display:flex;align-items:center;gap:12px;color:var(--fg);letter-spacing:.16em;text-transform:none;font-size:14px;font-weight:600}
+.logo{display:block;width:44px;height:44px;border-radius:50%;flex:none}
+h1{margin-top:28px}
+@media (max-width:640px){
+  .hero{padding-top:0 !important;padding-bottom:40px !important}
+  .top{padding-top:14px}
+  .logo{width:36px;height:36px}
+  .top{font-size:13px;gap:10px}
+  h1{margin-top:16px;font-size:clamp(30px,10vw,42px);line-height:1.1}
+  .lead{font-size:16px;line-height:1.5;margin-top:14px}
+  .event{grid-template-columns:1.15fr .8fr 1.15fr;margin-top:18px}
+  .event>div{padding:9px 8px}
+  .event b{font-size:9px;letter-spacing:.12em}
+  .event span{margin-top:3px}
+  .event .when span{font-size:min(15px,3.9vw)}
+  .event .time span{font-size:min(24px,6.4vw);white-space:nowrap;overflow-wrap:normal}
+  .event .time i{font-size:10px;margin-top:2px;line-height:1.2}
+  .event .free span{font-size:min(15px,3.9vw);overflow-wrap:normal}
+  .event .when span{overflow-wrap:normal}
+  .hero .btn{display:block;width:100%;text-align:center;margin-top:16px}
+  .hero .how{font-size:14px;margin-top:10px}
+}
 /* ---------- Форма реєстрації (спливаюче вікно) ---------- */
 button.btn{cursor:pointer;font-family:var(--sans)}
 dialog.reg{border:none;padding:0;width:min(100% - 32px,460px);max-height:calc(100dvh - 32px);overflow:auto;
@@ -120,9 +144,9 @@ dialog.reg::backdrop{background:rgba(11,11,14,.72)}
 <body>
 
 <div class="band">
-  <div class="wrap" style="padding-bottom:64px">
-    <div class="top">@krylova_blog · безкоштовний вебінар</div>
-    <h1 style="margin-top:34px">Як віддати блог <span class="plaque">нейромережі</span>, щоб клієнти приходили, а ви відпочивали</h1>
+  <div class="wrap hero" style="padding-bottom:64px">
+    <div class="top"><img class="logo" src="wing.jpg" alt="" width="44" height="44"><span>@krylova_blog</span></div>
+    <h1>Як віддати блог <span class="plaque">нейромережі</span>, щоб клієнти приходили, а ви відпочивали</h1>
     <p class="lead"><strong>90% роботи з блогом може забрати нейромережа.</strong> Як це зробити, покажу на вебінарі для спеціалістів, експертів та всіх, хто продає консультації, навчання чи майстер-класи.</p>
     <div class="event">
       <div class="when"><b>Коли</b><span>26 листопада, четвер</span></div>
