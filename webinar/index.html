@@ -7,7 +7,7 @@
 <title>Як віддати блог нейромережі</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,400;0,500;0,600;1,400&family=Playfair+Display:ital,wght@0,500;0,600;1,500;1,600&display=swap">
 <style>
 /* Layout: one narrow column, light-grey and dark bands alternate, berry plaques mark the key phrase. */
 :root{
@@ -93,7 +93,7 @@ footer{font-size:13px;color:var(--muted);padding-block:26px;max-width:720px;marg
 .logo{display:block;width:44px;height:44px;border-radius:50%;flex:none}
 h1{margin-top:28px}
 @media (max-width:640px){
-  .hero{padding-top:0 !important;padding-bottom:40px !important}
+  .hero{padding-top:0 !important}
   .top{padding-top:14px}
   .logo{width:36px;height:36px}
   .top{font-size:13px;gap:10px}
@@ -108,9 +108,22 @@ h1{margin-top:28px}
   .event .time i{font-size:10px;margin-top:2px;line-height:1.2}
   .event .free span{font-size:min(15px,3.9vw);overflow-wrap:normal}
   .event .when span{overflow-wrap:normal}
-  .hero .btn{display:block;width:100%;text-align:center;margin-top:16px}
-  .hero .how{font-size:14px;margin-top:10px}
+  .hero{padding-bottom:18px !important}
+  .ctabar .wrap{padding-block:16px 18px}
+  .ctabar .btn{display:block;width:100%;text-align:center}
+  .ctabar .how{font-size:14px;margin-top:10px}
+  .top .kind{display:block;font-weight:500;color:var(--muted);letter-spacing:.06em;font-size:12px;margin-top:1px}
+  .top .sep{display:none}
 }
+/* Чорна смуга з верхньою кнопкою */
+.ctabar{background:#0B0B0E;color:#F3F3F5}
+.ctabar .wrap{padding-block:28px 30px}
+.ctabar .btn{margin-top:0;border-color:var(--berry)}
+.ctabar .how{color:#C9CAD1}
+.top .kind{font-weight:500;color:var(--muted)}
+.top .sep{color:var(--muted)}
+/* Заливка «нейромережі» в заголовку: нижча, щоб не наїжджала на рядок вище */
+h1 .plaque{background:linear-gradient(to bottom,transparent .2em,var(--berry) .2em,var(--berry) calc(100% - .08em),transparent calc(100% - .08em))}
 /* ---------- Форма реєстрації (спливаюче вікно) ---------- */
 button.btn{cursor:pointer;font-family:var(--sans)}
 dialog.reg{border:none;padding:0;width:min(100% - 32px,460px);max-height:calc(100dvh - 32px);overflow:auto;
@@ -144,15 +157,19 @@ dialog.reg::backdrop{background:rgba(11,11,14,.72)}
 <body>
 
 <div class="band">
-  <div class="wrap hero" style="padding-bottom:64px">
-    <div class="top"><img class="logo" src="wing.jpg" alt="" width="44" height="44"><span>@krylova_blog</span></div>
+  <div class="wrap hero" style="padding-bottom:32px">
+    <div class="top"><img class="logo" src="wing.jpg" alt="" width="44" height="44"><span>@krylova_blog <span class="sep">·</span> <span class="kind">безкоштовний вебінар</span></span></div>
     <h1>Як віддати блог <span class="plaque">нейромережі</span>, щоб клієнти приходили, а ви відпочивали</h1>
-    <p class="lead"><strong>90% роботи з блогом може забрати нейромережа.</strong> Як це зробити, покажу на вебінарі для спеціалістів, експертів та всіх, хто продає консультації, навчання чи майстер-класи.</p>
+    <p class="lead"><strong>90% роботи з блогом може забрати нейромережа.</strong> <em>Як це зробити, покажу на вебінарі для спеціалістів, експертів та всіх, хто продає консультації, навчання чи майстер-класи.</em></p>
     <div class="event">
       <div class="when"><b>Коли</b><span>26 листопада, четвер</span></div>
       <div class="time"><b>Початок</b><span>18:00</span><i>за київським часом</i></div>
       <div class="free"><b>Вартість</b><span>Безкоштовно</span></div>
     </div>
+  </div>
+</div>
+<div class="band ctabar">
+  <div class="wrap">
     <button type="button" class="btn" id="cta1" data-open-reg>Зареєструватись</button>
     <p class="how dmhint">Натискаєте кнопку, пишете мені в директ слово <code>ВЕБІНАР</code>. У відповідь прийде посилання і нагадування перед початком.</p>
     <p class="how formhint" hidden>Залишаєте ім'я і телефон, після реєстрації вас перенаправить в телеграм-канал.</p>
