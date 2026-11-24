@@ -152,6 +152,11 @@ dialog.reg::backdrop{background:rgba(11,11,14,.72)}
   font-size:34px;margin:0 auto 18px}
 .reg .done p{margin:0 0 6px}
 .reg .done .btn{display:block;text-decoration:none;text-align:center}
+.reg .or{display:flex;align-items:center;gap:12px;font-size:12px;letter-spacing:.16em;text-transform:uppercase;color:var(--muted);margin:8px 0 0}
+.reg .or::before,.reg .or::after{content:"";flex:1;border-top:1px solid var(--line)}
+.reg a.btn-alt{display:block;text-align:center;text-decoration:none;background:transparent;color:var(--berry);border:1px solid var(--berry)}
+.reg a.btn-alt:hover{filter:none;background:var(--berry);color:#FFFFFF}
+.reg .alt-note{font-size:13px;line-height:1.45;color:var(--muted);text-align:center;margin:8px 0 0}
 </style>
 </head>
 <body>
@@ -277,6 +282,12 @@ dialog.reg::backdrop{background:rgba(11,11,14,.72)}
 
       <button type="submit" class="btn" id="reg-submit">Зареєструватись</button>
       <p class="err" id="err-send" role="alert"></p>
+
+      <div id="reg-bot-box" hidden>
+        <p class="or">або</p>
+        <a class="btn btn-alt" id="reg-bot" href="#" target="_blank" rel="noopener">Не хочу залишати номер</a>
+        <p class="alt-note">Зареєструйтесь в один клік у чат-боті, нагадування прийде туди.</p>
+      </div>
     </form>
 
     <div class="done" id="reg-done" hidden>
@@ -295,10 +306,13 @@ dialog.reg::backdrop{background:rgba(11,11,14,.72)}
    scriptUrl — адреса веб-застосунку Google Apps Script (закінчується на /exec).
    telegram  — посилання на Telegram-канал, куди перенаправляти після реєстрації.
                Порожнє — людина просто побачить «Ви зареєстровані!».
+   bot       — посилання на чат-бот (ManyChat) для кнопки «Не хочу залишати номер».
+               Порожнє — кнопки у вікні не буде.
    ================================================= */
 var CONFIG = {
   scriptUrl: "https://script.google.com/macros/s/AKfycbyqeEweB94NRxcr6BoAdLCEhF51pydzy75f-vcvGC3PFk5Oz7sa8VrwvK83KjQhVtuDyQ/exec",
-  telegram: "https://t.me/+U4yOAsyang02Y2Ni"
+  telegram: "https://t.me/+U4yOAsyang02Y2Ni",
+  bot: "https://telegram.me/krylova_vebinar_bot?start=w63941158"
 };
 
 (function () {
@@ -323,6 +337,11 @@ var CONFIG = {
     setTimeout(function () { nameEl.focus(); }, 30);
   }
   function close() { if (dlg.close) dlg.close(); else dlg.removeAttribute("open"); }
+
+  if (CONFIG.bot) {
+    document.getElementById("reg-bot").href = CONFIG.bot;
+    document.getElementById("reg-bot-box").hidden = false;
+  }
 
   document.querySelectorAll("[data-open-reg]").forEach(function (b) { b.addEventListener("click", open); });
   document.querySelectorAll("[data-close-reg]").forEach(function (b) { b.addEventListener("click", close); });
