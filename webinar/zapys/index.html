@@ -1,0 +1,202 @@
+<!doctype html>
+<html lang="uk">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex">
+<title>Запис вебінару</title>
+<meta name="description" content="Запис вебінару «Як використовувати нейромережі на повну і не перероблювати після них?». Доступний 3 дні.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@600&display=swap">
+<style>
+:root{
+  --bg:#ECEDEF; --bg2:#FFFFFF; --fg:#18181B; --muted:#5A5C64; --line:#C9CBD1;
+  --berry:#B01E80; --on-berry:#FFFFFF; --dark:#0B0B0E; --on-dark:#F3F3F5;
+  --serif:'Playfair Display',Georgia,'Times New Roman',serif;
+  --sans:'Montserrat',system-ui,-apple-system,'Segoe UI',Arial,sans-serif;
+}
+@media (prefers-color-scheme: dark){
+  :root:not([data-theme="light"]){--bg:#121215;--bg2:#1C1C21;--fg:#F1F1F4;--muted:#A5A7B0;--line:#34353C;--berry:#C0268D;color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#121215;--bg2:#1C1C21;--fg:#F1F1F4;--muted:#A5A7B0;--line:#34353C;--berry:#C0268D;color-scheme:dark}
+*{box-sizing:border-box}
+[hidden]{display:none!important}
+body{background:var(--bg);color:var(--fg);font-family:var(--sans);font-size:17px;line-height:1.6;margin:0;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.wrap{max-width:820px;margin:0 auto;padding-block:22px 48px}
+.top{display:flex;align-items:center;gap:12px;font-size:13px;letter-spacing:.08em;font-weight:500;color:var(--muted)}
+.top img{width:40px;height:40px;border-radius:50%;flex:none}
+.top .kind{letter-spacing:.2em;text-transform:uppercase;font-size:13px}
+h1{font-family:var(--serif);font-weight:600;line-height:1.14;font-size:clamp(28px,5.6vw,44px);margin:26px 0 0;text-wrap:balance}
+.plaque{background:var(--berry);color:var(--on-berry);padding:0 .18em;-webkit-box-decoration-break:clone;box-decoration-break:clone}
+
+/* Таймер */
+.timer{margin:24px 0 0;background:var(--dark);color:var(--on-dark);padding:18px 20px;display:flex;flex-wrap:wrap;align-items:center;gap:10px 22px}
+.timer p{margin:0;font-size:15px;line-height:1.45;flex:1 1 240px}
+.timer p b{color:#F7B6E0;font-weight:600}
+.clock{display:flex;gap:8px;font-variant-numeric:tabular-nums}
+.clock div{background:var(--berry);color:#fff;min-width:62px;padding:8px 6px 6px;text-align:center}
+.clock span{display:block;font-family:var(--serif);font-weight:600;font-size:28px;line-height:1}
+.clock small{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;margin-top:4px;opacity:.9}
+
+/* Відео */
+.video{position:relative;margin:18px 0 0;aspect-ratio:16/9;background:#000;width:100%}
+.video iframe,.video video{position:absolute;inset:0;width:100%;height:100%;border:0}
+.video .ph{position:absolute;inset:0;display:grid;place-items:center;text-align:center;color:#C9CBD1;font-size:15px;padding:20px}
+
+/* Кнопки */
+.cta{display:grid;grid-template-columns:repeat(auto-fit,minmax(min(100%,300px),1fr));gap:12px;margin:22px 0 0}
+.btn{display:block;text-align:center;text-decoration:none;font-weight:600;letter-spacing:.06em;text-transform:uppercase;font-size:15px;
+  padding:19px 16px;border:1px solid var(--berry)}
+.btn-main{background:var(--berry);color:#fff}
+.btn-main:hover{filter:brightness(1.1)}
+.btn-alt{background:transparent;color:var(--berry)}
+.btn-alt:hover{background:var(--berry);color:#fff}
+.btn:focus-visible{outline:3px solid var(--fg);outline-offset:3px}
+.note{font-size:14px;color:var(--muted);margin:10px 0 0;text-align:center}
+
+/* Запис закінчився */
+.gone{margin:18px 0 0;background:var(--bg2);border:1px solid var(--line);padding:40px 22px;text-align:center}
+.gone h2{font-family:var(--serif);font-weight:600;font-size:clamp(24px,5vw,32px);line-height:1.2;margin:0 0 10px}
+.gone p{margin:0 auto;max-width:30em;color:var(--muted)}
+
+footer{font-size:13px;color:var(--muted);max-width:820px;margin:0 auto;padding-block:22px;border-top:1px solid var(--line)}
+footer a{color:inherit}
+@media (max-width:480px){
+  .clock div{min-width:0;flex:1}
+  .clock{width:100%}
+  .clock span{font-size:24px}
+}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <div class="top"><img src="../wing.jpg" alt="" width="40" height="40"><span class="kind">Запис вебінару</span></div>
+
+  <h1>Як використовувати <span class="plaque">нейромережі</span> на&nbsp;повну і не перероблювати після них?</h1>
+
+  <div class="timer" id="timer" hidden>
+    <p><b>Запис доступний 3 дні.</b> Після цього він буде недоступний, тож подивіться його, поки є час.</p>
+    <div class="clock" aria-live="off">
+      <div><span id="t-d">0</span><small>дні</small></div>
+      <div><span id="t-h">00</span><small>год</small></div>
+      <div><span id="t-m">00</span><small>хв</small></div>
+      <div><span id="t-s">00</span><small>сек</small></div>
+    </div>
+  </div>
+
+  <div class="video" id="video"></div>
+
+  <div class="gone" id="gone" hidden>
+    <h2>Запис більше недоступний</h2>
+    <p>3 дні на перегляд минули. Але ще можна внести передоплату і зафіксувати ціну на навчання.</p>
+  </div>
+
+  <div class="cta">
+    <a class="btn btn-main" id="pay" href="#" target="_blank" rel="noopener">Передоплата 1000 грн</a>
+    <a class="btn btn-alt" id="insta" href="#" target="_blank" rel="noopener">Написати в Direct @krylova_blog</a>
+  </div>
+</div>
+
+<footer>@krylova_blog · @krylova_school · ФОП Савчин Поліна Володимирівна · <a href="../privacy.html">Політика конфіденційності</a></footer>
+
+<script>
+/* ================= НАЛАШТУВАННЯ =================
+   video     — посилання на запис: YouTube (звичайне посилання або youtu.be), Vimeo
+               або пряме посилання на файл .mp4.
+   pay       — посилання на оплату передоплати 1000 грн.
+   instagram — посилання для кнопки «Написати в Direct» (ig.me/m/… відкриває переписку).
+   hours     — скільки годин запис доступний кожній людині з моменту першого відкриття.
+   deadline  — (необов'язково) крайній строк для всіх, напр. "2026-12-08T23:59:00+02:00".
+               Після нього запис закритий навіть для тих, хто відкрив сторінку щойно.
+   ================================================= */
+var CONFIG = {
+  video: "https://youtu.be/N1-J6Cm9YWY",
+  pay: "https://secure.wayforpay.com/button/b9a9761c01186",
+  instagram: "https://ig.me/m/krylova_blog",
+  hours: 72,
+  deadline: ""
+};
+
+(function () {
+  var KEY = "zapys_first_visit_v1";
+  var now = Date.now();
+
+  // Коли людина вперше відкрила сторінку на цьому пристрої
+  var first = null;
+  try { first = parseInt(localStorage.getItem(KEY), 10); } catch (e) {}
+  if (!first || isNaN(first) || first > now) {
+    first = now;
+    try { localStorage.setItem(KEY, String(first)); } catch (e) {}
+  }
+  var end = first + CONFIG.hours * 3600 * 1000;
+  if (CONFIG.deadline) {
+    var d = Date.parse(CONFIG.deadline);
+    if (!isNaN(d) && d < end) end = d;
+  }
+
+  var pay = document.getElementById("pay");
+  var insta = document.getElementById("insta");
+  if (CONFIG.pay) pay.href = CONFIG.pay; else pay.removeAttribute("target");
+  if (CONFIG.instagram) insta.href = CONFIG.instagram;
+
+  var box = document.getElementById("video");
+  var timer = document.getElementById("timer");
+
+  function embed(url) {
+    var m = url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|live\/|shorts\/|embed\/)|youtu\.be\/)([\w-]{11})/);
+    if (m) return { type: "iframe", src: "https://www.youtube-nocookie.com/embed/" + m[1] + "?rel=0&modestbranding=1" };
+    m = url.match(/vimeo\.com\/(?:video\/)?(\d+)(?:\/(\w+))?/);
+    if (m) return { type: "iframe", src: "https://player.vimeo.com/video/" + m[1] + (m[2] ? "?h=" + m[2] : "") };
+    if (/\.(mp4|webm|mov)(\?|$)/i.test(url)) return { type: "video", src: url };
+    return { type: "iframe", src: url };
+  }
+
+  function close() {
+    box.innerHTML = "";
+    box.hidden = true;
+    timer.hidden = true;
+    document.getElementById("gone").hidden = false;
+  }
+
+  if (Date.now() >= end) { close(); return; }
+
+  if (CONFIG.video) {
+    var e = embed(CONFIG.video), el;
+    if (e.type === "video") {
+      el = document.createElement("video");
+      el.controls = true; el.playsInline = true; el.preload = "metadata";
+      el.setAttribute("controlsList", "nodownload");
+      el.src = e.src;
+    } else {
+      el = document.createElement("iframe");
+      el.src = e.src;
+      el.title = "Запис вебінару";
+      el.allow = "autoplay; fullscreen; picture-in-picture; encrypted-media";
+      el.allowFullscreen = true;
+    }
+    box.appendChild(el);
+  } else {
+    box.innerHTML = '<div class="ph">Запис з’явиться тут найближчим часом</div>';
+  }
+
+  timer.hidden = false;
+  var td = document.getElementById("t-d"), th = document.getElementById("t-h"),
+      tm = document.getElementById("t-m"), ts = document.getElementById("t-s");
+  function pad(n) { return (n < 10 ? "0" : "") + n; }
+  function tick() {
+    var left = Math.max(0, end - Date.now());
+    if (left <= 0) { close(); return; }
+    var s = Math.floor(left / 1000);
+    td.textContent = Math.floor(s / 86400);
+    th.textContent = pad(Math.floor(s % 86400 / 3600));
+    tm.textContent = pad(Math.floor(s % 3600 / 60));
+    ts.textContent = pad(s % 60);
+    setTimeout(tick, 1000 - (Date.now() % 1000));
+  }
+  tick();
+})();
+</script>
+</body>
+</html>
